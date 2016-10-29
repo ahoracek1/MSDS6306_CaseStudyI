@@ -1,4 +1,4 @@
-# MSDS 6306_ Case Study 1_Angela Horacek_Rev1
+# MSDS 6306_ Case Study 1_Angela Horacek_Rev2
 
 ############################################################################
 #PART I:  Download Data                                                    #
