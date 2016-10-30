@@ -18,7 +18,6 @@ setwd("C:/Users/Angela/Documents/1_SMU/Courses/MSDS6306DoingDataScience/CaseStud
 #Install Libraries.
 library(ggplot2)
 library(dplyr)
-library(reshape2)
 
 ######################################
 # STEP 2: ANALYZE THE DATA           #
@@ -71,41 +70,39 @@ names(SummaryStat)[1] <- "Income.Group"
 names(SummaryStat)[2] <- "MeanGDP"
 names(SummaryStat)[3] <- "Median"
 names(SummaryStat)[4] <- "Standard Deviation"
-SummaryStat
 
 # Step 4C. Create a histogram for GDP by all income levels.
-Plot1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP, fill=Income.Group, colour=Income.Group)) + 
-    geom_histogram() + 
+Histogram1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP, fill=Income.Group, colour=Income.Group)) + 
+    geom_histogram(bins=10) + 
     ggtitle("Histogram: GDP Distr. by Income Group")+ xlab("GDP (millions of US dollars)")+ 
     theme_bw()
-Plot1
+Histogram1
 
 
 # Step 4D. Create a density distribution plot for GDP by all income levels.
-Plot2 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP,  alpha=.2, fill=Income.Group,
+DensityDistrib1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP,  alpha=.2, fill=Income.Group,
     colour=Income.Group)) + geom_density() + scale_x_log10() + 
     geom_vline(data=SummaryStat,aes(xintercept=Median, colour=Income.Group, 
     show.legend=TRUE), linetype= "dashed", size=1)+
     ggtitle("GDP Density Distr. by Income Group(Log Trans)\n- vertical lines: medians -")+ xlab("GDP (millions of US dollars)")+ theme_bw()
-Plot2
+DensityDistrib1
 
 
 # Step 4E. Create a box plot of GDP versus Income.Group for all income levels.
-Plot3 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=Income.Group, y=GDP, 
+Boxplot1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=Income.Group, y=GDP, 
         fill = Income.Group, alpha=0.2)) + geom_boxplot() + scale_y_log10() +
         theme_bw() + theme(axis.text.x=element_blank()) + 
         stat_summary(fun.y=mean, colour="darkred", geom="point", 
         shape=18, size=3,show_guide = FALSE)+
         ggtitle("Box Plot: GDP Distr. by Income Group(Log Trans)") +
         ylab("GDP (millions of US dollars)")
-Plot3
+Boxplot1
 
 
 #QUESTION 5:  Cut the GDP ranking into 5 separate quantile groups.  Make a table
 # versus Income.Group.  How many countries are Lower middle income but among the 
 # 38 nations with the highest GDP?
 QuantileGroups <- quantile(MergeData1$GDPRanking)
-QuantileGroups
 MergeData1$GDP.Ranking.Quantile.Groups <- cut(MergeData1$GDPRanking, breaks = QuantileGroups)
 IncGroupQuantile <- MergeData1[ ,c("Income.Group", "GDP.Ranking.Quantile.Groups")]
 IncGroupQuantile.table <-table(IncGroupQuantile)
