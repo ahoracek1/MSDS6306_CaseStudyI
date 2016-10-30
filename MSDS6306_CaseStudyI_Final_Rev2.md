@@ -95,7 +95,7 @@ Although sorting the data in ascending GDP order revealed the 13th country, the 
 
 Thirdly, the average GDP ranking for high income-OECD countries is approximately 2.8 times the average GDP ranking of high income nonOECD countries intimating that the cooperative economic style may be economically beneficial to member countries. 
 
-Fourthly, the GDP Density Distibution by Income Group plot shows the five distribution incomes along with their mean GDP. The lower middle and upper middle income groups have similar distributions with close means and the largest variances of all the groups.  The low income group has the smallest variance of all the groups. All income group distributions are right skewed
+Fourthly, the GDP Density Distibution by Income Group plot shows the five distribution incomes along with their mean GDP. The lower middle and upper middle income groups have similar distributions with close means and the largest variances of all the groups.  The low income group has the smallest variance of all the groups. All income group distributions are right skewed as their means are to the right of their Medians related to their distribution curve.
 
 Lastly, the GDP.Ranking.Quantile.Groups versus Income.Group table indicates unexpected Quantile groups based on the country's labeled income groupings. For example, some countries in high income groups are in the third and fourth quantile GDP rankings. Conversely, there are some lower middle income and even yet low income groups that are in the first and second quantile ranking groups. 
 
