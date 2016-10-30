@@ -31,6 +31,7 @@ names(GDPcountryData) <- c("CountryCode", "GDPRanking", "Col3", "CountryName", "
 
 # Step 2C:  Keep only the columns for the analysis.
 GDPcountryData <-GDPcountryData[,c("CountryCode", "GDPRanking", "CountryName","GDP")]
+View(GDPcountryData)
 
 # Step 2D:  GDPcountryData:  Remove first 5 lines of data because these are 
 # not relevant and new headers will given.  Remove rows 196-331 (total = 136 rows)
