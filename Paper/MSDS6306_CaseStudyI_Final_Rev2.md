@@ -47,7 +47,7 @@ The average GDP ranking for the "High income: OECD" group is 32.97 and for the "
 
 ####Answer 4:
 #####Histogram Plot
-The overlapping histgrams indicate the distributions are right skewed.  A log transformation is in order.  See the next transformed plots for further analysis.
+The histograms indicate the GDP distributions for each Income Group are right skewed.  A log transformation is in order.  See the next transformed plots for further analysis.
 
 ```r
 print(Histogram1)
@@ -58,7 +58,7 @@ print(Histogram1)
 
 
 #####Density Distribution Plot
-The log transformed GDP Density Distibution by Income Group plot shows the five distribution incomes along with their median GDP indicated by the dashed vertical line. The distributions are relatively normal under a log transformation with different variabilities between the groups.
+The log transformed GDP Density Distibutions by Income Group plot shows the five overlapping distributions annotated by their associated median GDP as seen by the dashed vertical line. The distributions are relatively normal under a log transformation with different variabilities between the groups.
 
 ```r
 print(DensityDistrib1)
@@ -104,10 +104,10 @@ First, although there are 190 countries in the GDP data set, there are only 189 
 
 Secondly, sorting the data in ascending GDP order revealed the 13th country.  However, the information quickly revealed Tuvula as having the lowest GDP,$40 MM, and the US as having the highest GDP,$16,244,600 MM.
  
-Thirdly, the average GDP ranking for high income-OECD countries is approximately 2.8 times the average GDP ranking of high income nonOECD countries intimating that the cooperative economic style yields higher domestic financial benefits for member countries. 
+Thirdly, the average GDP ranking for high income-OECD countries is approximately 2.8 times the average GDP ranking of high income nonOECD countries intimating that the cooperative economic style may yield higher domestic financial benefits for member countries. 
 
-Fourthly, the graphical analysis prompted a log transformation of the data.  The  log transformation graphs suggest relatively normal GDP distributions with different variances for the income groups.  Further statistical tests may be done to find out if there are significant differences between the medians of each group.  
+Fourthly, the graphical analysis prompted a log transformation of the data.  The log transformation graphs suggest relatively normal GDP distributions with different variances for the income groups.  Further statistical tests may be performed to find out if there are significant differences between the groups related to selected parameters such as mean, median, etc.   
 
-Lastly,one might expect the GDP quantile rankings of the countries to reflect the name of the Income Group.  For example, high income groups would be ranked in the first GDP Ranking group and low income groups would be reflected in the fourth GDP Quantile group.  Surprisingly, this is not the case for all countries related to their specific income groupings. Indeed, some countries in high income groups are in the third and fourth GDP Ranking quantiles. Conversely, some counties that are lower middle income are in the first and second quantile GDP ranking groups. Moreover, low income countries are in second GDP ranking quantile groups. The misleading descrepancy is rooted in the very definition of Income Group as used by The Data World Bank. "Income Groups are defined by gross national income (GNI) is the total domestic and foreign output claimed by residents of a country, consisting of gross domestic product (GDP) plus factor incomes earned by foreign residents, minus income earned in the domestic economy by nonresidents (Todaro & Smith, 2011: 44)." What does this tell us?  Countries may have competitive global GDP rankings reflecting their domestic country income but either fall short of foreign economic partnerships or have high incomes earned in their countries by nonresidents resulting in a lower income group classification. 
+Lastly,one might expect the GDP quantile rankings of the countries to reflect the name of the Income Group.  For instance, high income groups would be ranked in the first GDP Ranking group and low income groups would be reflected in the fourth GDP Quantile group.  Surprisingly, this is not the case for all countries related to their specific income groupings. Indeed, the opposite is true.  Some countries in high income groups are in the third and fourth GDP Ranking quantiles. Conversely, some counties that are lower middle income are in the first and second quantile GDP ranking groups. Moreover, low income countries are in the second GDP ranking quantile group. The misleading descrepancy is rooted in the very definition of Income Group as used by The Data World Bank. "Income Groups are defined by gross national income (GNI) is the total domestic and foreign output claimed by residents of a country, consisting of gross domestic product (GDP) plus factor incomes earned by foreign residents, minus income earned in the domestic economy by nonresidents (Todaro & Smith, 2011: 44)." What does this tell us?  Countries may have competitive global GDP rankings reflecting their domestic country income but either fall short of foreign economic partnerships or have high incomes earned in their countries by nonresidents resulting in a lower income group classification. 
 
 In conclusion, reproducible data requires a rigorous and structured approach to gathering, cleaning, analyzing, and documenting the results. Moreover, several critical skills are needed to produce a cogent analysis. Although computer programming plays an important role in the construction and manipulation of data, knowledge about statistics; visual data management; and subject matter content are tantamount to producing meaningful analytical results.    

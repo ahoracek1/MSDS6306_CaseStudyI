@@ -63,6 +63,7 @@ AvgGDPRanking.HInonOECD
 # Step 4A:  Create a dataset with GDP and Income.Group
 GDPvsIncomeGroup <- MergeData1[ ,c("GDP", "Income.Group")]
 GDPvsIncomeGroupSorted <-GDPvsIncomeGroup[order(GDPvsIncomeGroup$Income.Group), ]
+GDPvsIncomeGroupSorted
 
 # Step 4B. Find the GDP mean of each Income.Group to include as a vertical line in the ggplot. 
 SummaryStat <- GDPvsIncomeGroup %>% group_by(Income.Group) %>% summarise(mean(GDP), median(GDP), sd(GDP))
@@ -71,31 +72,40 @@ names(SummaryStat)[2] <- "MeanGDP"
 names(SummaryStat)[3] <- "Median"
 names(SummaryStat)[4] <- "Standard Deviation"
 
-# Step 4C. Create a histogram for GDP by all income levels.
-Histogram1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP, fill=Income.Group, colour=Income.Group)) + 
-    geom_histogram(bins=10) + 
-    ggtitle("Histogram: GDP Distr. by Income Group")+ xlab("GDP (millions of US dollars)")+ 
+
+
+# Step 4C. Create histograms of GDP for all income levels.
+labels <- c("High income: OECD" = "High Income\n OECD", "High income: nonOECD" = "High Income\n nonOECD",
+            "Low income" = "Low Income", "Upper middle income"="Upper\n Middle\n Income",
+            "Lower middle income" = "Lower\n Middle\n Income")
+
+Histogram1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP, fill=Income.Group, colour=Income.Group)) +
+    geom_histogram(bins=20)+
+    facet_wrap(~ Income.Group, scales="free", drop=TRUE)+
+    facet_grid(. ~ Income.Group, labeller=labeller(Income.Group = labels))+
+    theme(axis.title.x=element_blank())+
+    ggtitle("GDP Histogram by Income Group")+ 
+    xlab("GDP (millions of US dollars)")+
     theme_bw()
 Histogram1
 
 
 # Step 4D. Create a density distribution plot for GDP by all income levels.
-DensityDistrib1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP,  alpha=.2, fill=Income.Group,
-    colour=Income.Group)) + geom_density() + scale_x_log10() + 
-    geom_vline(data=SummaryStat,aes(xintercept=Median, colour=Income.Group, 
+DensityDistrib1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=GDP,  alpha=.2, colour=Income.Group)) + geom_density() + scale_x_log10() + 
+    geom_vline(data=SummaryStat,aes(xintercept=Median, colour=Income.Group,
     show.legend=TRUE), linetype= "dashed", size=1)+
-    ggtitle("GDP Density Distr. by Income Group(Log Trans)\n- vertical lines: medians -")+ xlab("GDP (millions of US dollars)")+ theme_bw()
+    ggtitle("GDP Density Distribution\nby Income Group\n- vertical lines: Medians -")+ 
+    xlab("GDP (millions of US dollars)\n Log Transformed")+ theme_bw()
 DensityDistrib1
-
 
 # Step 4E. Create a box plot of GDP versus Income.Group for all income levels.
 Boxplot1 <- ggplot(data=GDPvsIncomeGroupSorted, aes(x=Income.Group, y=GDP, 
         fill = Income.Group, alpha=0.2)) + geom_boxplot() + scale_y_log10() +
         theme_bw() + theme(axis.text.x=element_blank()) + 
         stat_summary(fun.y=mean, colour="darkred", geom="point", 
-        shape=18, size=3,show_guide = FALSE)+
-        ggtitle("Box Plot: GDP Distr. by Income Group(Log Trans)") +
-        ylab("GDP (millions of US dollars)")
+        shape=18, size=3,show.legend = FALSE)+
+        ggtitle("Box Plot: \nGDP Distribution \nby Income Group") +
+        ylab("GDP (millions of US dollars)\nLog Transformed")
 Boxplot1
 
 
